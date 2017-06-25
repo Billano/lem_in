@@ -6,7 +6,7 @@
 #    By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 17:06:20 by eurodrig          #+#    #+#              #
-#    Updated: 2017/06/11 23:07:23 by eurodrig         ###   ########.fr        #
+#    Updated: 2017/06/25 03:09:56 by eurodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,18 @@ L = ./includes/src/
 
 P = ./includes/src/
 
+
+LI += $(C)ft_get_map.c
+LI += $(C)ft_valid_map.c
+LI += $(C)ft_valid_size.c
+LI += $(C)ft_number_of_ants.c
+LI += $(C)ft_the_rooms.c
+LI += $(C)ft_is_room.c
+LI += $(C)ft_valid_room.c
+LI += $(C)ft_the_links.c
+LI += $(C)ft_is_link.c
+LI += $(C)ft_valid_link.c
+LI += $(C)ft_comments.c
 
 LF = $(L)btree_apply_infix.c
 LF += $(L)btree_apply_prefix.c

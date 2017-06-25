@@ -6,70 +6,44 @@
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 02:32:59 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/22 19:51:56 by eurodrig         ###   ########.fr       */
+/*   Updated: 2017/06/25 03:22:12 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-int	ft_number_of_ants(t_list_s **map)
+void ft_free_char_doble(char **str)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+		i++;
+	while (j < i)
+	{
+		ft_memdel((void **)&str[i]);
+		j++;
+	}
+	ft_memdel((void **)&str);
+}
+
+void ft_free_list_s(t_list_s *list)
 {
 	t_list_s *tmp;
-	char *num_str;
-	int num;
 
 	tmp = 0;
-	tmp = *map;
-	while (!ft_strncmp(tmp->data, "#", 1))
-		tmp = tmp->next;
-	num = ft_atoi(tmp->data);
-	num_str = ft_itoa_base(num, 10);
-	if (!ft_strcmp(num_str, tmp->data))
-		return (num);
-	return (0);
-}
-
-t_list_s *ft_comments(t_list_s **map)
-{
-	t_list_s *tmp;
-	t_list_s *comments;
-
-	tmp = 0;
-	tmp = *map;
-	comments = 0;
-	while (tmp)
+	while (list)
 	{
-		if (!ft_strncmp(tmp->data, "#", 1))
-			ft_list_push_back_s(&comments, tmp->data);
-		tmp = tmp->next;
+		tmp = list->next;
+		ft_memdel((void **)&list);
+		list = tmp;
 	}
-	return (comments);
 }
 
-char ft_is_room(char *str)
-{
-	char **rooms;
-	int n_room;
-	int num;
-	char *num_str;
 
-	rooms = ft_strsplit(str, ' ');
-	n_room = 0;
-	while (rooms[n_room])
-		n_room++;
-	if (n_room != 3 || ((ft_strlen(rooms[0]) + ft_strlen(rooms[1]) + ft_strlen(rooms[2]) + 2) != ft_strlen(str)))
-		return (0);
-	n_room = 1;
-	while (n_room < 3)
-	{
-		num = ft_atoi(rooms[n_room]);
-		num_str = ft_itoa_base(num, 10);
-		if (ft_strcmp(num_str, rooms[n_room]))
-			return (0);
-		n_room++;
-	}
-	return (1);
-}
+
 
 char *ft_start(t_list_s **map)
 {
@@ -105,69 +79,24 @@ char *ft_end(t_list_s **map)
 	return (0);
 }
 
-t_list_s *ft_the_rooms(t_list_s **map)
-{
-	t_list_s *tmp;
-	t_list_s *rooms;
 
-	tmp = 0;
-	rooms = 0;
-	tmp = *map;
-	while (tmp)
-	{
-		if (ft_strncmp(tmp->data, "#", 1) && ft_is_room(tmp->data))
-			ft_list_push_back_s(&rooms, tmp->data);
-		tmp = tmp->next;
-	}
-	return (rooms);
-}
 
-char ft_is_link(char *str)
-{
-	char **rooms;
-	int room_n;
 
-	room_n = 0;
-	rooms = ft_strsplit(str, '-');
-	while (rooms[room_n])
-		room_n++;
-	if (room_n == 2 && (ft_strlen(rooms[0]) + ft_strlen(rooms[1]) + 1 == ft_strlen(str)))
-		return (1);
-	return (0);
-}
-
-t_list_s *ft_the_links(t_list_s **maps)
-{
-	t_list_s *tmp;
-	t_list_s *list;
-
-	tmp = 0;
-	tmp = *maps;
-	list = 0;
-	while (tmp)
-	{
-		if (ft_is_link(tmp->data))
-			ft_list_push_back_s(&list, tmp->data);
-		tmp = tmp->next;
-	}
-	return (list);
-}
-
-char ft_valid_map(t_list_s *maps, t_list_s *comments, t_list_s *rooms, t_list_s *links)
-{
-	int lines;
-	int n_comments;
-	int n_rooms;
-	int n_links;
-
-	lines = ft_list_size_s(maps);
-	n_comments = ft_list_size_s(comments);
-	n_rooms = ft_list_size_s(rooms);
-	n_links = ft_list_size_s(links);
-	if ((n_comments + n_rooms + n_links + 1 != lines) || n_rooms == 0)
-		return (0);
-	return (1);
-}
+// char ft_valid_map(t_list_s *maps, t_list_s *comments, t_list_s *rooms, t_list_s *links)
+// {
+// 	int lines;
+// 	int n_comments;
+// 	int n_rooms;
+// 	int n_links;
+//
+// 	lines = ft_list_size_s(maps);
+// 	n_comments = ft_list_size_s(comments);
+// 	n_rooms = ft_list_size_s(rooms);
+// 	n_links = ft_list_size_s(links);
+// 	if ((n_comments + n_rooms + n_links + 1 != lines) || n_rooms == 0)
+// 		return (0);
+// 	return (1);
+// }
 
 t_graph *ft_graph_create_adj(t_list_s *rooms, int n)
 {
@@ -427,7 +356,7 @@ void ft_print_arr(int *dist, int n, t_graph *graph)
 	int i;
 
 	i = 0;
-	printf("name   vertex    distance from source\n");
+	printf("name\t\tvertex\t\tdistance from source\n");
 	while (i < n)
 	{
 		printf("%s\t\t %d \t \t %d\n", graph->arr[i].name, i, dist[i]);
@@ -493,10 +422,9 @@ void ft_dijkstra(t_graph *graph, int src)
 int main()
 {
 	char *buf;
-	int ret;
+	// int ret;
 	t_list_s *map;
 	t_list_s *comments;
-	int ant_num;
 	t_list_s *rooms;
 	t_list_s *links;
 	t_list_s *tmp;
@@ -506,43 +434,12 @@ int main()
 	map = 0;
 	comments = 0;
 	links = 0;
+	rooms = 0;
 	tmp = 0;
 	graph = 0;
-	while ((ret = get_next_line(0, &buf)) > 0)
-	{
-		ft_list_push_back_s(&map, buf);
-	}
-	ant_num = ft_number_of_ants(&map);
-	printf("num: %d\n", ant_num);
-	printf("Comments:\n");
-	comments = ft_comments(&map);
-	tmp = comments;
-	while (tmp)
-	{
-		ft_printf("%s\n", tmp->data);
-		tmp = tmp->next;
-	}
-	printf("Rooms:\n");
-	rooms = 0;
-	rooms = ft_the_rooms(&map);
-	tmp = rooms;
-	while (tmp)
-	{
-		ft_printf("%s\n", tmp->data);
-		tmp = tmp->next;
-	}
-	links = ft_the_links(&map);
-	tmp = links;
-	printf("Links:\n");
-	while (tmp)
-	{
-		ft_printf("%s\n", tmp->data);
-		tmp = tmp->next;
-	}
-	printf("Start = %s\n", ft_start(&map));
-	printf("End = %s\n", ft_end(&map));
-
-	// ft_solve_map(map, rooms, links);
+	map = ft_get_map();
+	if (!ft_valid_map(map))
+		return (0);
 	tmp = map;
 	printf("map:\n");
 	while (tmp)
@@ -551,6 +448,8 @@ int main()
 		tmp = tmp->next;
 	}
 	printf("\nend map\n");
+	rooms = ft_the_rooms(&map);
+	links = ft_the_links(&map, rooms);
 	graph = ft_graph_parser(rooms, links);
 	printf("\nImprimiendo el graph:\n");
 	ft_print_graph(graph);
@@ -559,7 +458,7 @@ int main()
 
 	printf("\nImprimiendo Dijasktra:\n");
 	idx = 0;
-	start_name = ft_start(&rooms);
+	start_name = ft_start(&map);
 	while (idx < graph->n)
 	{
 		if (!ft_strcmp(graph->arr[idx].name, start_name))
