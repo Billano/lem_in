@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_map.c                                     :+:      :+:    :+:   */
+/*   ft_valid_solution.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/24 23:43:26 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/26 21:03:21 by eurodrig         ###   ########.fr       */
+/*   Created: 2017/06/25 14:43:25 by eurodrig          #+#    #+#             */
+/*   Updated: 2017/06/25 22:15:35 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-char ft_valid_map(t_list_s *map)
+char ft_valid_solution(t_graph *graph, t_list_s *map)
 {
-	t_graph *graph;
-	t_list_s *rooms;
-	t_list_s *links;
+	char *start_name;
+	char *end_name;
+	int idx;
 
-	if (!ft_valid_size(map))
-		return (0);
-	rooms = ft_the_rooms(&map);
-	links = ft_the_links(&map, rooms);
-	graph = ft_graph_parser(rooms, links);
-	ft_free_list_s(rooms);
-	ft_free_list_s(links);
-	ft_print_map(map);
-	ft_print_graph(graph);
-	if (!ft_valid_solution(graph, map))
+	idx = 0;
+	start_name = ft_start(&map);
+	end_name = ft_end(&map);
+	if (!ft_dijkstra(graph, ft_graph_index_extract(graph, start_name),\
+	ft_graph_index_extract(graph, end_name)))
 	{
+		ft_memdel((void **)&start_name);
+		ft_memdel((void **)&end_name);
 		return (0);
 	}
-	return (1);
+	else
+	{
+		ft_memdel((void **)&start_name);
+		ft_memdel((void **)&end_name);
+		return (1);
+	}
 }

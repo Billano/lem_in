@@ -6,7 +6,7 @@
 #    By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 17:06:20 by eurodrig          #+#    #+#              #
-#    Updated: 2017/06/25 03:09:56 by eurodrig         ###   ########.fr        #
+#    Updated: 2017/06/26 18:49:19 by eurodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,30 @@ LI += $(C)ft_valid_room.c
 LI += $(C)ft_the_links.c
 LI += $(C)ft_is_link.c
 LI += $(C)ft_valid_link.c
+LI += $(C)ft_valid_solution.c
 LI += $(C)ft_comments.c
+LI += $(C)ft_graph_parser.c
+LI += $(C)ft_graph_create_adj.c
+LI += $(C)ft_graph_add_edge.c
+LI += $(C)ft_new_room.c
+LI += $(C)ft_room_weight.c
+LI += $(C)ft_sqrt.c
+LI += $(C)ft_free_char_doble.c
+LI += $(C)ft_free_list_s.c
+LI += $(C)ft_start.c
+LI += $(C)ft_end.c
+LI += $(C)ft_graph_index_extract.c
+LI += $(C)ft_dijkstra.c
+LI += $(C)ft_create_min_heap.c
+LI += $(C)ft_new_min_heap_node.c
+LI += $(C)ft_decrease_key.c
+LI += $(C)ft_swap_min_heap_node.c
+LI += $(C)ft_is_heap_empty.c
+LI += $(C)ft_min_heapify.c
+LI += $(C)ft_is_in_min_heap.c
+LI += $(C)ft_extract_min_heap.c
+LI += $(C)ft_solve_map.c
+LI += $(C)ft_print_map.c
 
 LF = $(L)btree_apply_infix.c
 LF += $(L)btree_apply_prefix.c

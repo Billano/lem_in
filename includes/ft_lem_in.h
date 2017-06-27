@@ -6,7 +6,7 @@
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 03:20:21 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/25 03:01:36 by eurodrig         ###   ########.fr       */
+/*   Updated: 2017/06/26 18:44:50 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_room_list
 	char *name;
 	int x;
 	int y;
-	// int dest;
 }							t_room_list;
 
 typedef struct s_graph
@@ -73,6 +72,30 @@ void ft_free_char_doble(char **str);
 char ft_valid_room(t_list_s *rooms, char *new_room);
 void ft_free_list_s(t_list_s *list);
 char ft_valid_link(char *link, t_list_s *rooms);
+int ft_room_weight(int src_x, int src_y, int dest_x, int dest_y);
+int ft_sqrt(int n);
+int ft_graph_index_extract(t_graph *graph, char *src);
+char ft_valid_solution(t_graph *graph, t_list_s *map);
+char ft_dijkstra(t_graph *graph, int src, int dest);
+void ft_solve_map(t_list_s* map);
+void ft_print_map(t_list_s *map);
+
+void ft_print_arr(int *dist, int n, t_graph *graph);
+char ft_is_in_min_heap(t_min_heap *min_heap, int v);
+void ft_decrease_key(t_min_heap *min_heap, int v, int dist);
+t_min_heap_node *ft_extract_min_heap(t_min_heap *min_heap);
+char ft_is_heap_empty(t_min_heap *min_heap);
+void ft_swap_min_heap_node(t_min_heap_node **a, t_min_heap_node **b);
+t_min_heap_node *ft_new_min_heap_node(int v, int dist);
+void ft_min_heapify(t_min_heap *min_heap, int idx);
+void ft_print_graph(t_graph *graph);
+t_min_heap *ft_create_min_heap(int capacity);
+
+
+
+
+
+
 
 int	ft_number_of_ants(t_list_s **map);
 t_list_s *ft_comments(t_list_s **map);

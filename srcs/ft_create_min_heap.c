@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_map.c                                     :+:      :+:    :+:   */
+/*   ft_create_min_heap.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/24 23:43:26 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/26 21:03:21 by eurodrig         ###   ########.fr       */
+/*   Created: 2017/06/25 22:18:12 by eurodrig          #+#    #+#             */
+/*   Updated: 2017/06/25 22:20:23 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-char ft_valid_map(t_list_s *map)
+t_min_heap *ft_create_min_heap(int capacity)
 {
-	t_graph *graph;
-	t_list_s *rooms;
-	t_list_s *links;
+	t_min_heap *min_heap;
 
-	if (!ft_valid_size(map))
+	if (!(min_heap = (t_min_heap *)malloc(sizeof(t_min_heap))))
 		return (0);
-	rooms = ft_the_rooms(&map);
-	links = ft_the_links(&map, rooms);
-	graph = ft_graph_parser(rooms, links);
-	ft_free_list_s(rooms);
-	ft_free_list_s(links);
-	ft_print_map(map);
-	ft_print_graph(graph);
-	if (!ft_valid_solution(graph, map))
-	{
-		return (0);
-	}
-	return (1);
+	min_heap->pos = (int *)malloc(sizeof(t_min_heap));
+	min_heap->size = 0;
+	min_heap->capacity = capacity;
+	min_heap->arr = (t_min_heap_node **)malloc(sizeof(t_min_heap_node *)\
+	* capacity);
+	return (min_heap);
 }

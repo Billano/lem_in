@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_map.c                                     :+:      :+:    :+:   */
+/*   ft_room_weight.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/24 23:43:26 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/26 21:03:21 by eurodrig         ###   ########.fr       */
+/*   Created: 2017/06/25 21:08:06 by eurodrig          #+#    #+#             */
+/*   Updated: 2017/06/25 21:08:53 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-char ft_valid_map(t_list_s *map)
+int ft_room_weight(int src_x, int src_y, int dest_x, int dest_y)
 {
-	t_graph *graph;
-	t_list_s *rooms;
-	t_list_s *links;
+	int x;
+	int y;
+	int c;
 
-	if (!ft_valid_size(map))
-		return (0);
-	rooms = ft_the_rooms(&map);
-	links = ft_the_links(&map, rooms);
-	graph = ft_graph_parser(rooms, links);
-	ft_free_list_s(rooms);
-	ft_free_list_s(links);
-	ft_print_map(map);
-	ft_print_graph(graph);
-	if (!ft_valid_solution(graph, map))
-	{
-		return (0);
-	}
-	return (1);
+	x = dest_x - src_x;
+	y = dest_y - src_y;
+	c = (x * x) + (y * y);
+	return (ft_sqrt(c));
 }

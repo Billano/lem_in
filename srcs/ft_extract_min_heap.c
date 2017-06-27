@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_map.c                                     :+:      :+:    :+:   */
+/*   ft_extract_min_heap.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/24 23:43:26 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/26 21:03:21 by eurodrig         ###   ########.fr       */
+/*   Created: 2017/06/25 22:26:50 by eurodrig          #+#    #+#             */
+/*   Updated: 2017/06/25 22:27:21 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-char ft_valid_map(t_list_s *map)
+t_min_heap_node *ft_extract_min_heap(t_min_heap *min_heap)
 {
-	t_graph *graph;
-	t_list_s *rooms;
-	t_list_s *links;
+	t_min_heap_node *root;
+	t_min_heap_node *last_node;
 
-	if (!ft_valid_size(map))
+	if (ft_is_heap_empty(min_heap))
 		return (0);
-	rooms = ft_the_rooms(&map);
-	links = ft_the_links(&map, rooms);
-	graph = ft_graph_parser(rooms, links);
-	ft_free_list_s(rooms);
-	ft_free_list_s(links);
-	ft_print_map(map);
-	ft_print_graph(graph);
-	if (!ft_valid_solution(graph, map))
-	{
-		return (0);
-	}
-	return (1);
+	root = 0;
+	last_node = 0;
+	root = min_heap->arr[0];
+	last_node = min_heap->arr[min_heap->size - 1];
+	min_heap->arr[0] = last_node;
+	min_heap->pos[root->v] = min_heap->size - 1;
+	min_heap->pos[last_node->v] = 0;
+	--min_heap->size;
+	ft_min_heapify(min_heap, 0);
+	return (root);
 }

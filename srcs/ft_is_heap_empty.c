@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_map.c                                     :+:      :+:    :+:   */
+/*   ft_is_heap_empty.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/24 23:43:26 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/26 21:03:21 by eurodrig         ###   ########.fr       */
+/*   Created: 2017/06/25 22:25:14 by eurodrig          #+#    #+#             */
+/*   Updated: 2017/06/25 22:25:35 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-char ft_valid_map(t_list_s *map)
+char ft_is_heap_empty(t_min_heap *min_heap)
 {
-	t_graph *graph;
-	t_list_s *rooms;
-	t_list_s *links;
-
-	if (!ft_valid_size(map))
-		return (0);
-	rooms = ft_the_rooms(&map);
-	links = ft_the_links(&map, rooms);
-	graph = ft_graph_parser(rooms, links);
-	ft_free_list_s(rooms);
-	ft_free_list_s(links);
-	ft_print_map(map);
-	ft_print_graph(graph);
-	if (!ft_valid_solution(graph, map))
-	{
-		return (0);
-	}
-	return (1);
+	return ((min_heap->size == 0) ? 1 : 0);
 }

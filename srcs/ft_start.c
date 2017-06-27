@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_map.c                                     :+:      :+:    :+:   */
+/*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/24 23:43:26 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/26 21:03:21 by eurodrig         ###   ########.fr       */
+/*   Created: 2017/06/25 21:26:04 by eurodrig          #+#    #+#             */
+/*   Updated: 2017/06/25 21:34:46 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-char ft_valid_map(t_list_s *map)
+char *ft_start(t_list_s **map)
 {
-	t_graph *graph;
-	t_list_s *rooms;
-	t_list_s *links;
+	t_list_s *tmp;
+	char **start_name;
+	char *str;
 
-	if (!ft_valid_size(map))
-		return (0);
-	rooms = ft_the_rooms(&map);
-	links = ft_the_links(&map, rooms);
-	graph = ft_graph_parser(rooms, links);
-	ft_free_list_s(rooms);
-	ft_free_list_s(links);
-	ft_print_map(map);
-	ft_print_graph(graph);
-	if (!ft_valid_solution(graph, map))
+	tmp = 0;
+	tmp = *map;
+	while (tmp && ft_strcmp(tmp->data, "##start"))
+		tmp = tmp->next;
+	while (tmp && !ft_strncmp(tmp->data, "#", 1) && !ft_is_room(tmp->data))
+		tmp = tmp->next;
+	if (tmp && ft_is_room(tmp->data))
 	{
-		return (0);
+		start_name = ft_strsplit(tmp->data, ' ');
+		str = ft_strdup(start_name[0]);
+		ft_free_char_doble(start_name);
+		return (str);
 	}
-	return (1);
+	return (0);
 }
