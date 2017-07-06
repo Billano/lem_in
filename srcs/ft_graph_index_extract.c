@@ -12,7 +12,7 @@
 
 #include "../includes/ft_lem_in.h"
 
-int ft_graph_index_extract(t_graph *graph, char *src)
+int	ft_graph_index_extract(t_graph *graph, char *src)
 {
 	int i;
 

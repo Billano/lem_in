@@ -12,10 +12,10 @@
 
 #include "../includes/ft_lem_in.h"
 
-t_list_s *ft_the_links(t_list_s **maps, t_list_s *rooms)
+t_list_s	*ft_the_links(t_list_s **maps, t_list_s *rooms)
 {
-	t_list_s *tmp;
-	t_list_s *list;
+	t_list_s	*tmp;
+	t_list_s	*list;
 
 	tmp = 0;
 	tmp = *maps;

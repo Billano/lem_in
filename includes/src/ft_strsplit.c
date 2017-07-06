@@ -6,7 +6,7 @@
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 00:16:13 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/05/11 15:44:01 by eurodrig         ###   ########.fr       */
+/*   Updated: 2017/07/04 00:38:01 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ static void		ft_arr(char const *s, char c, char **w, int wc)
 	k = 0;
 	while (j < wc)
 	{
-		if (!(w[j] = (char *)malloc(sizeof(char) * ft_cc(&s[k], c) + 1)))
-			return ;
+		w[j] = ft_strnew(ft_cc(&s[k], c));
 		while (s[k] == c)
 			k++;
 		i = 0;
@@ -79,7 +78,7 @@ char			**ft_strsplit(char const *s, char c)
 	if (!s)
 		return (NULL);
 	wc = ft_wc(s, c);
-	if (!(w = (char **)malloc(sizeof(char *) * (wc) + 1)))
+	if (!(w = (char **)malloc(sizeof(char *) * (wc + 1))))
 		return (NULL);
 	ft_arr(s, c, w, wc);
 	return (w);

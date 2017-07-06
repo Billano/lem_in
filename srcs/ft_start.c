@@ -6,20 +6,22 @@
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/25 21:26:04 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/25 21:34:46 by eurodrig         ###   ########.fr       */
+/*   Updated: 2017/07/04 00:41:55 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-char *ft_start(t_list_s **map)
+char	*ft_start(t_list_s **map)
 {
-	t_list_s *tmp;
-	char **start_name;
-	char *str;
+	t_list_s	*tmp;
+	char		**start_name;
+	char		*str;
 
 	tmp = 0;
 	tmp = *map;
+	start_name = 0;
+	str = 0;
 	while (tmp && ft_strcmp(tmp->data, "##start"))
 		tmp = tmp->next;
 	while (tmp && !ft_strncmp(tmp->data, "#", 1) && !ft_is_room(tmp->data))
@@ -31,5 +33,5 @@ char *ft_start(t_list_s **map)
 		ft_free_char_doble(start_name);
 		return (str);
 	}
-	return (0);
+	return (ft_strdup(""));
 }

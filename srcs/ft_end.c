@@ -6,17 +6,17 @@
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/25 21:30:01 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/25 21:34:46 by eurodrig         ###   ########.fr       */
+/*   Updated: 2017/07/03 22:23:35 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-char *ft_end(t_list_s **map)
+char	*ft_end(t_list_s **map)
 {
-	t_list_s *tmp;
-	char **end_name;
-	char *str;
+	t_list_s	*tmp;
+	char		**end_name;
+	char		*str;
 
 	tmp = 0;
 	tmp = *map;
@@ -31,5 +31,5 @@ char *ft_end(t_list_s **map)
 		ft_free_char_doble(end_name);
 		return (str);
 	}
-	return (0);
+	return (ft_strdup(""));
 }

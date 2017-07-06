@@ -12,9 +12,9 @@
 
 #include "../includes/ft_lem_in.h"
 
-t_min_heap_node *ft_new_min_heap_node(int v, int dist)
+t_min_heap_node	*ft_new_min_heap_node(int v, int dist)
 {
-	t_min_heap_node *node;
+	t_min_heap_node	*node;
 
 	if (!(node = (t_min_heap_node *)malloc(sizeof(t_min_heap_node))))
 		return (0);

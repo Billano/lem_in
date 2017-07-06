@@ -6,17 +6,17 @@
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/25 19:35:07 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/25 20:24:44 by eurodrig         ###   ########.fr       */
+/*   Updated: 2017/07/03 21:14:33 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-t_graph *ft_graph_create_adj(t_list_s *rooms, int n)
+t_graph	*ft_graph_create_adj(t_list_s *rooms, int n)
 {
-	t_graph *graph;
-	int i;
-	char **room;
+	t_graph	*graph;
+	int		i;
+	char	**room;
 
 	i = 0;
 	graph = 0;

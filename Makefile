@@ -6,13 +6,13 @@
 #    By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 17:06:20 by eurodrig          #+#    #+#              #
-#    Updated: 2017/06/26 18:49:19 by eurodrig         ###   ########.fr        #
+#    Updated: 2017/07/05 16:03:02 by eurodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LINAME = lem_in
 
-CFLAG = -Wall -Werror -Wextra
+CFLAGS += -Wall -Werror -Wextra -ggdb3 -fsanitize=address
 
 RM = /bin/rm -rfv
 
@@ -59,6 +59,11 @@ LI += $(C)ft_is_in_min_heap.c
 LI += $(C)ft_extract_min_heap.c
 LI += $(C)ft_solve_map.c
 LI += $(C)ft_print_map.c
+LI += $(C)ft_push_path.c
+LI += $(C)ft_list_s_to_char_dob.c
+LI += $(C)ft_print_ants.c
+LI += $(C)ft_free_graph.c
+LI += $(C)ft_free_t_room.c
 
 LF = $(L)btree_apply_infix.c
 LF += $(L)btree_apply_prefix.c
@@ -335,7 +340,7 @@ $(LINAME):
 			 	@gcc $(CFLAG) -c $(LF) $(PF) -I ./includes/
 			 	@ar rc libftprintf.a $(OF)
 				@ranlib libftprintf.a
-				@gcc $(CFLAG) $(LI) libftprintf.a -I ./includes/ -o $(LINAME)
+				@gcc $(CFLAG) $(LI) $(LF) $(PF) -I ./includes/ -o $(LINAME)
 				@echo "$(LINAME)" ready to be used
 
 clean:

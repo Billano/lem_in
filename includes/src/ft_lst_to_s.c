@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_to_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eurodrig <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 20:34:24 by eurodrig          #+#    #+#             */
-/*   Updated: 2016/12/29 20:34:31 by eurodrig         ###   ########.fr       */
+/*   Updated: 2017/07/03 22:08:02 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,13 @@ char	*ft_lst_to_s(t_lst *lst)
 
 	tmp = lst;
 	i = 0;
-	if (!(str = (char *)malloc(sizeof(char) * ft_lst_len(tmp) + 1)))
-		return (NULL);
+	str = ft_strnew(ft_lst_len(tmp));
 	while (tmp)
 	{
 		str[i++] = tmp->data;
 		head = tmp;
 		tmp = tmp->next;
-		free(head);
+		ft_memdel((void **)&head);
 	}
 	str[i] = '\0';
 	return (str);

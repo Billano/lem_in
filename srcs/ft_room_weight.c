@@ -12,7 +12,7 @@
 
 #include "../includes/ft_lem_in.h"
 
-int ft_room_weight(int src_x, int src_y, int dest_x, int dest_y)
+int	ft_room_weight(int src_x, int src_y, int dest_x, int dest_y)
 {
 	int x;
 	int y;

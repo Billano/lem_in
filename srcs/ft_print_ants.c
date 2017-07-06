@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print_ants.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 02:32:59 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/07/05 16:27:20 by eurodrig         ###   ########.fr       */
+/*   Created: 2017/06/29 16:49:36 by eurodrig          #+#    #+#             */
+/*   Updated: 2017/07/05 16:07:16 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-int	main(void)
+void	ft_print_ants(int n, t_list_s *path)
 {
-	t_list_s	*map;
-	char		*start_name;
-	char		*end_name;
+	int		i;
+	int		out_lim;
+	char	**camino;
+	int		j;
+	int		x;
 
-	map = 0;
-	map = ft_get_map();
-	if (!ft_valid_map(map))
+	out_lim = ft_list_size_s(path) + n - 1;
+	camino = ft_list_s_to_char_dob(path);
+	i = 1;
+	while (i <= out_lim)
 	{
-		ft_putstr("ERROR");
-		ft_free_list_s(map);
-		return (0);
+		j = i - 1;
+		if (j >= ft_list_size_s(path))
+			j = ft_list_size_s(path) - 1;
+		while (j >= 0)
+		{
+			x = i - j;
+			if (x <= n)
+				ft_printf("L%d-%s ", x, camino[j]);
+			j--;
+		}
+		ft_putstr("\n");
+		i++;
 	}
-	ft_print_map(map);
-	start_name = ft_start(&map);
-	end_name = ft_end(&map);
-	ft_solve_map(map, start_name, end_name);
-	ft_memdel((void **)&start_name);
-	ft_memdel((void **)&end_name);
-	ft_free_list_s(map);
-	return (0);
+	ft_free_char_doble(camino);
 }

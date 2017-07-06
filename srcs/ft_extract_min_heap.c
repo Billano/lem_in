@@ -12,7 +12,7 @@
 
 #include "../includes/ft_lem_in.h"
 
-t_min_heap_node *ft_extract_min_heap(t_min_heap *min_heap)
+t_min_heap_node	*ft_extract_min_heap(t_min_heap *min_heap)
 {
 	t_min_heap_node *root;
 	t_min_heap_node *last_node;

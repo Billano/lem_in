@@ -12,7 +12,7 @@
 
 #include "../includes/ft_lem_in.h"
 
-char ft_is_heap_empty(t_min_heap *min_heap)
+char	ft_is_heap_empty(t_min_heap *min_heap)
 {
 	return ((min_heap->size == 0) ? 1 : 0);
 }

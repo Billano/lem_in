@@ -6,15 +6,15 @@
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/25 00:20:46 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/26 18:36:10 by eurodrig         ###   ########.fr       */
+/*   Updated: 2017/07/04 00:57:45 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-static char ft_is_room_helper_a(char *str, char **rooms)
+static char	ft_is_room_helper_a(char *str, char **rooms)
 {
-	int n_room;
+	int		n_room;
 
 	n_room = 0;
 	while (rooms[n_room])
@@ -26,11 +26,11 @@ static char ft_is_room_helper_a(char *str, char **rooms)
 	return (1);
 }
 
-static char ft_is_room_helper_b(char **rooms)
+static char	ft_is_room_helper_b(char **rooms)
 {
-	int n_room;
-	int num;
-	char *num_str;
+	int		n_room;
+	int		num;
+	char	*num_str;
 
 	n_room = 1;
 	while (n_room < 3)
@@ -48,9 +48,9 @@ static char ft_is_room_helper_b(char **rooms)
 	return (1);
 }
 
-char ft_is_room(char *str)
+char		ft_is_room(char *str)
 {
-	char **rooms;
+	char	**rooms;
 
 	rooms = ft_strsplit(str, ' ');
 	if (!ft_is_room_helper_a(str, rooms) || !ft_is_room_helper_b(rooms))

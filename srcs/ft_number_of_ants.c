@@ -14,9 +14,9 @@
 
 int	ft_number_of_ants(t_list_s **map)
 {
-	t_list_s *tmp;
-	char *num_str;
-	int num;
+	t_list_s	*tmp;
+	char		*num_str;
+	int			num;
 
 	tmp = 0;
 	tmp = *map;

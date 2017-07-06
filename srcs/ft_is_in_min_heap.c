@@ -12,7 +12,7 @@
 
 #include "../includes/ft_lem_in.h"
 
-char ft_is_in_min_heap(t_min_heap *min_heap, int v)
+char	ft_is_in_min_heap(t_min_heap *min_heap, int v)
 {
 	if (min_heap->pos[v] < min_heap->size)
 		return (1);

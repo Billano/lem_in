@@ -12,10 +12,10 @@
 
 #include "../includes/ft_lem_in.h"
 
-char ft_is_link(char *str)
+char	ft_is_link(char *str)
 {
-	char **rooms;
-	int room_n;
+	char	**rooms;
+	int		room_n;
 
 	room_n = 0;
 	rooms = ft_strsplit(str, '-');

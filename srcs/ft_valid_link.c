@@ -12,12 +12,12 @@
 
 #include "../includes/ft_lem_in.h"
 
-char ft_valid_link(char *link, t_list_s *rooms)
+char	ft_valid_link(char *link, t_list_s *rooms)
 {
-	char **links;
-	char **room_info;
-	char room_one;
-	char room_two;
+	char	**links;
+	char	**room_info;
+	char	room_one;
+	char	room_two;
 
 	room_one = 0;
 	room_two = 0;

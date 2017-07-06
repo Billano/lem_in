@@ -12,11 +12,11 @@
 
 #include "../includes/ft_lem_in.h"
 
-char ft_valid_room(t_list_s *rooms, char *new_room)
+char	ft_valid_room(t_list_s *rooms, char *new_room)
 {
-	char **new_room_info;
-	char **tmp_room;
-	int i;
+	char	**new_room_info;
+	char	**tmp_room;
+	int		i;
 
 	i = 0;
 	new_room_info = ft_strsplit(new_room, ' ');

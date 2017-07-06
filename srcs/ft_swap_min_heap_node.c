@@ -12,7 +12,7 @@
 
 #include "../includes/ft_lem_in.h"
 
-void ft_swap_min_heap_node(t_min_heap_node **a, t_min_heap_node **b)
+void	ft_swap_min_heap_node(t_min_heap_node **a, t_min_heap_node **b)
 {
 	t_min_heap_node *t;
 

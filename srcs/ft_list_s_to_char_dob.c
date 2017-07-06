@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_list_s_to_char_dob.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 02:32:59 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/07/05 16:27:20 by eurodrig         ###   ########.fr       */
+/*   Created: 2017/06/29 17:15:35 by eurodrig          #+#    #+#             */
+/*   Updated: 2017/07/03 21:59:29 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-int	main(void)
+char	**ft_list_s_to_char_dob(t_list_s *list)
 {
-	t_list_s	*map;
-	char		*start_name;
-	char		*end_name;
+	char	**str;
+	int		i;
+	int		n;
 
-	map = 0;
-	map = ft_get_map();
-	if (!ft_valid_map(map))
+	n = ft_list_size_s(list);
+	str = (char **)malloc(sizeof(char *) * (n + 1));
+	i = 0;
+	while (i < n)
 	{
-		ft_putstr("ERROR");
-		ft_free_list_s(map);
-		return (0);
+		str[i] = ft_strdup(list->data);
+		list = list->next;
+		i++;
 	}
-	ft_print_map(map);
-	start_name = ft_start(&map);
-	end_name = ft_end(&map);
-	ft_solve_map(map, start_name, end_name);
-	ft_memdel((void **)&start_name);
-	ft_memdel((void **)&end_name);
-	ft_free_list_s(map);
-	return (0);
+	str[i] = 0;
+	return (str);
 }

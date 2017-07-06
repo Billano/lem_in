@@ -6,17 +6,17 @@
 /*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/25 14:43:25 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/06/25 22:15:35 by eurodrig         ###   ########.fr       */
+/*   Updated: 2017/07/04 02:31:07 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lem_in.h"
 
-char ft_valid_solution(t_graph *graph, t_list_s *map)
+char	ft_valid_solution(t_graph *graph, t_list_s *map)
 {
-	char *start_name;
-	char *end_name;
-	int idx;
+	char	*start_name;
+	char	*end_name;
+	int		idx;
 
 	idx = 0;
 	start_name = ft_start(&map);

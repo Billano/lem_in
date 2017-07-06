@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_elem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eurodrig <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 17:12:05 by eurodrig          #+#    #+#             */
-/*   Updated: 2017/03/10 17:12:07 by eurodrig         ###   ########.fr       */
+/*   Updated: 2017/07/03 20:42:43 by eurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list_s	*ft_create_elem_s(char *data)
 	lst = NULL;
 	if (!(lst = (t_list_s *)malloc(sizeof(t_list_s))))
 		return (NULL);
-	lst->data = data;
+	lst->data = ft_strdup(data);
 	lst->next = NULL;
 	return (lst);
 }

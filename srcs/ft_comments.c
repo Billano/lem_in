@@ -12,12 +12,12 @@
 
 #include "../includes/ft_lem_in.h"
 
-t_list_s *ft_comments(t_list_s **map)
+t_list_s	*ft_comments(t_list_s **map)
 {
-	t_list_s *tmp;
-	t_list_s *comments;
-	char start;
-	char end;
+	t_list_s	*tmp;
+	t_list_s	*comments;
+	char		start;
+	char		end;
 
 	tmp = *map;
 	comments = 0;

@@ -12,22 +12,23 @@
 
 #include "../includes/ft_lem_in.h"
 
-void ft_min_heapify(t_min_heap *min_heap, int idx)
+void	ft_min_heapify(t_min_heap *min_heap, int idx)
 {
-	int smallest;
-	int left;
-	int right;
-	t_min_heap_node *smallest_node;
-	t_min_heap_node *idx_node;
+	int				smallest;
+	int				left;
+	int				right;
+	t_min_heap_node	*smallest_node;
+	t_min_heap_node	*idx_node;
 
 	left = 2 * idx + 1;
 	right = 2 * idx + 2;
 	smallest_node = 0;
-	idx_node = 0;
 	smallest = idx;
-	if (left < min_heap->size && min_heap->arr[left]->dist < min_heap->arr[smallest]->dist)
+	if (left < min_heap->size && min_heap->arr[left]->dist <\
+			min_heap->arr[smallest]->dist)
 		smallest = left;
-	if (right < min_heap->size && min_heap->arr[right]->dist < min_heap->arr[smallest]->dist)
+	if (right < min_heap->size && min_heap->arr[right]->dist <\
+			min_heap->arr[smallest]->dist)
 		smallest = right;
 	if (smallest != idx)
 	{

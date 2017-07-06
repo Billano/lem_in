@@ -12,10 +12,10 @@
 
 #include "../includes/ft_lem_in.h"
 
-t_graph *ft_graph_parser(t_list_s *rooms, t_list_s *links)
+t_graph	*ft_graph_parser(t_list_s *rooms, t_list_s *links)
 {
-	t_graph *graph;
-	char **l_rooms;
+	t_graph	*graph;
+	char	**l_rooms;
 
 	graph = 0;
 	graph = ft_graph_create_adj(rooms, ft_list_size_s(rooms));

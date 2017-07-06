@@ -12,7 +12,7 @@
 
 #include "../includes/ft_lem_in.h"
 
-int ft_sqrt(int n)
+int	ft_sqrt(int n)
 {
 	int i;
 
