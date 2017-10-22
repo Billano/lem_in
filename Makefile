@@ -6,13 +6,13 @@
 #    By: eurodrig <eurodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 17:06:20 by eurodrig          #+#    #+#              #
-#    Updated: 2017/07/05 16:03:02 by eurodrig         ###   ########.fr        #
+#    Updated: 2017/10/21 17:43:14 by eurodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LINAME = lem_in
 
-CFLAGS += -Wall -Werror -Wextra -ggdb3 -fsanitize=address
+CFLAGS += -Wall -Werror -Wextra
 
 RM = /bin/rm -rfv
 
