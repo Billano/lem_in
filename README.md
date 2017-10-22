@@ -52,8 +52,6 @@ Made for MacOS, might run/compile different in another OS
 
 * **Eugenio Rodriguez** -- [Billano](https://github.com/Billano)
 
-* **Rodolphe Vigneron**
-
 ## Acknowledgments
 
 * 42
